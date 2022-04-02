@@ -17,14 +17,22 @@ let blogs = [
         author : 'Yusuf Fauziyan',
         duration: '1 Moth',
         desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...'
+        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...',
+        nodejs: 'nodejs',
+        react: 'react',
+        javascript: 'javascript',
+        vuejs: 'vuejs'
     },
     {
         title: 'Ashiapp',
         author : 'Yusuf Fauziyan',
         duration: '1 Moth',
         desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...'
+        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...',
+        nodejs: 'nodejs',
+        react: 'react',
+        javascript: 'javascript',
+        vuejs: 'vuejs'
     },
 ]
 
@@ -52,9 +60,12 @@ app.post('/add-project', (req, res) => {
         duration: abtDuration(data.sDate, data.eDate),
         sDate: data.sDate,
         eDate: data.eDate,
-
         author: 'Yusuf Fauziyan',
-        result: data.result
+        //icon
+        nodejs: data.nodejs,
+        react: data.react,
+        javascript: data.javascript,
+        vuejs: data.vuejs
     }
     blogs.push(data)
     console.log(blogs);
@@ -64,29 +75,23 @@ app.post('/add-project', (req, res) => {
 app.get ('/update-project/:index', (req, res) =>{
     let index = req.params.index
     let blog = blogs[index]
-    res.render('update-project', blog)
+    res.render('update-project',{update: blog, index})
 })
-
-app.post('/update-project', (req, res) => {
-    let index = req.params.index
+// update
+app.post('/update-project/:index', (req, res) => {
     let data = req.body
-    console.log(data);
-    blogs.splice(index, 1)
-        data = {
-            title: data.title,
-            desc: data.description.slice(0, 250) +'...',
-            description: data.description,
-            image: data.image,
-            duration: abtDuration(data.sDate, data.eDate),
-            sDate: data.sDate,
-            eDate: data.eDate,
+    let index = req.params.index
+    
+    blogs[index].title = data.title
+    blogs[index].sDate = data.sDate
+    blogs[index].eDate = data.eDate
+    blogs[index].duration = abtDuration(data.sDate, data.eDate),
+    blogs[index].nodejs = data.nodejs
+    blogs[index].react = data.react
+    blogs[index].javascript = data.javascript
+    blogs[index].vuejs = data.vuejs
 
-            author: 'Yusuf Fauziyan',
-            result: data.result
-        }
-        blogs.push(data)
-        console.log(blogs);
-        res.redirect('/')
+    res.redirect('/')
 })
 
 // Showing blog detail by index
@@ -107,50 +112,6 @@ app.get('/delete-project/:index', function(req, res) {
 
     res.redirect('/')
 })
-
-
-
-// UPDATE
-// app.get ('/update-project/:index', (req, res) =>{
-//     let index = req.params.index
-//     let form = blogs[index]
-//     console.log(form)
-//     res.render('update-project', form)
-// })
-
-// app.post ('/update-project/:index', (req, res) => {
-//     let index = req.params.index
-//     let data = req.body
-//     console.log(req.body)
-//     // console.log(data)
-//     // blogs.filter(data => {
-//     //     if(blogs[index] == index) {
-//     //         title= data.title
-//     //         desc= data.description.slice(0, 250) +'...'
-//     //         description= data.description
-//     //         image= data.image
-//     //         duration= abtDuration(data.sDate, data.eDate)
-//     //         sDate= data.sDate
-//     //         eDate= data.eDate
-//     //         author= 'Yusuf Fauziyan'
-//     //         result= data.result
-
-//     //         return data
-//     //     }
-//     // })
-// })
-
-
-
-// Cara mengirim data ke hbs
-// app.get ('/', (req, res) =>{
-//     res.render('index', {nama: 'yusuf fauziyan'})
-// })
-
-// TANGKAP ID/PARAMS
-// app.get('/product/:id', (req, res) =>{
-//     res.send(`Product ID: ${req.params.id} <br> Category: ${req.query.category}`)
-// })
 
 app.use ('/', (req, res) => {
     res.status(404)

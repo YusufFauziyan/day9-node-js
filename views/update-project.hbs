@@ -43,38 +43,38 @@
 
       <!-- FORM PROJECT -->
       <div class="bg-container d-flex" style="height: 94vh;">
-        <form action="/update-project" method="POST" class="container m-auto fw-bold" style="width: 450px;">
+        <form action="/update-project/{{index}}" method="POST" class="container m-auto fw-bold" style="width: 450px;">
             <h2 class="text-center fw-bold mb-5">UPDATE MY PROJECT</h2>
             <div class="mb-3">
                 <label for="title" class="form-label">Project Name</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{title}}">
+                <input type="text" class="form-control" id="title" name="title" value="{{update.title}}">
             </div>
             <div class="row">
                 <div class="col">
                     <label for="sDate">Start Date</label>
-                    <input type="date" class="form-control" id="sDate" name="sDate" value="{{sDate}}">
+                    <input type="date" class="form-control" id="sDate" name="sDate" value="{{update.sDate}}">
                 </div>
                 <div class="col">
                     <label for="eDate">End Date</label>
-                    <input type="date" class="form-control" id="eDate" name="eDate" value="{{eDate}}">
+                    <input type="date" class="form-control" id="eDate" name="eDate" value="{{update.eDate}}">
                 </div>
             </div>
             <div class="form-floating mt-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px" name="description">{{description}}</textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px" name="description">{{update.description}}</textarea>
                 <label for="floatingTextarea2">Description</label>
             </div>
-            <div>
+             <div>
                 <label for="" class="mt-3">Technologies</label>
                 <div class="d-flex text-secondary fw-bold font-monospace">
                     <div class="col mt-2">
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="" id="node">
+                            <input class="form-check-input" type="checkbox" value="nodejs" id="node" name="nodejs" {{nodejs}}>
                             <label class="form-check-label" for="node">
                               Node Js
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="react">
+                            <input class="form-check-input" type="checkbox" value="react" id="react" name="react">
                             <label class="form-check-label" for="react">
                               React Js
                             </label>
@@ -82,14 +82,14 @@
                     </div>
                     <div class="col mt-2">
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="" id="js">
+                            <input class="form-check-input" type="checkbox" value="javascript" id="js" name="javascript">
                             <label class="form-check-label" for="js">
                               JavaScript
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="vue">
-                            <label class="form-check-label" for="vue">
+                            <input class="form-check-input" type="checkbox" value="vuejs" id="vuejs" name="vuejs">
+                            <label class="form-check-label" for="vuejs">
                               Vue Js
                             </label>
                           </div>
@@ -99,7 +99,7 @@
             <div>
                 <label for="img" class="mt-3 mb-2">Upload Image</label>
                 <div class="input-group">
-                    <input style="position: relative;" type="file" class="form-control" id="img" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="image" value="{{image}}">
+                    <input style="position: relative;" type="file" class="form-control" id="img" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="image" value="{{update.image}}">
                     <i class='bx bx-paperclip' ></i>
                 </div>
             </div>
