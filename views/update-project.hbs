@@ -68,13 +68,13 @@
                 <div class="d-flex text-secondary fw-bold font-monospace">
                     <div class="col mt-2">
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="nodejs" id="node" name="nodejs" {{nodejs}}>
+                            <input class="form-check-input" type="checkbox" value="nodejs" id="node" name="nodejs" {{#if update.nodejs}} checked {{/if}}>
                             <label class="form-check-label" for="node">
                               Node Js
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="react" id="react" name="react">
+                            <input class="form-check-input" type="checkbox" value="react" id="react" name="react" {{#if update.react}} checked {{/if}}>
                             <label class="form-check-label" for="react">
                               React Js
                             </label>
@@ -82,13 +82,13 @@
                     </div>
                     <div class="col mt-2">
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="javascript" id="js" name="javascript">
+                            <input class="form-check-input" type="checkbox" value="javascript" id="js" name="javascript" {{#if update.javascript}} checked {{/if}}>
                             <label class="form-check-label" for="js">
                               JavaScript
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="vuejs" id="vuejs" name="vuejs">
+                            <input class="form-check-input" type="checkbox" value="vuejs" id="vuejs" name="vuejs" {{#if update.vuejs}} checked {{/if}}>
                             <label class="form-check-label" for="vuejs">
                               Vue Js
                             </label>
