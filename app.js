@@ -15,7 +15,7 @@ let blogs = [
     { 
         title: 'Kyaa',
         author : 'Yusuf Fauziyan',
-        duration: '1 Moth',
+        duration: '1 Month',
         desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...',
         nodejs: 'nodejs',
@@ -26,7 +26,7 @@ let blogs = [
     {
         title: 'Ashiapp',
         author : 'Yusuf Fauziyan',
-        duration: '1 Moth',
+        duration: '1 Month',
         desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora officia dolores nostrum corporis sit modi optio! Voluptatum, eius asperiores! Nemo sit corporis doloribus fugiat quia quo? Praesentium quisquam nulla quam...',
         nodejs: 'nodejs',
@@ -89,8 +89,8 @@ app.post('/update-project/:index', (req, res) => {
     blogs[index].nodejs = data.nodejs
     blogs[index].react = data.react
     blogs[index].javascript = data.javascript
-    blogs[index].vuejs = data.vuejs
-
+    blogs[index].vuejs = data.vuejs,
+    blogs[index].description = data.description
     res.redirect('/')
 })
 
@@ -127,11 +127,11 @@ function abtDuration(startDate, endDate) {
     let day = duration / (1000 * 3600 * 24)
   
     if (day < 30) {
-        return day + ' Hari';
+        return day + ' Day';
     } else if (month < 12) {
-        return month + ' Bulan';
+        return month + ' Month';
     } else {
-        return year + ' Tahun'
+        return year + ' Year'
     }
 
 }
